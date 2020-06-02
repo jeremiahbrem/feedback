@@ -1,5 +1,5 @@
 # Feeback App
-This is a simple application for users to leave feedback. It was built with Python, Flask, SQLAlchemy, Flask-WTForms, and Boostrap.  
+This is a simple application for users to leave feedback. It was built with Python, Flask, SQLAlchemy, Flask-WTForms, and Bootstrap.  
 
 #### **Functionality includes:**  
 - Creating and deleting user accounts
