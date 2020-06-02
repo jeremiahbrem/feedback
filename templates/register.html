@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+  {% block title %}Feedback Registration{% endblock %}
+
+  {% block content %}
+
+    <h2>Create Your Account</h2>
+    {% for message in get_flashed_messages() %}
+      <h5 class="text-success">{{ message }}</h5>
+    {% endfor %}  
+    <form id="register_form" method="POST"> 
+      {{ form.hidden_tag() }}
+      
+      {% for field in form
+        if field.widget.input_type != 'hidden' %}
+        
+          <p>
+            {{ field.label }} 
+            {{ field }}     
+               
+            {% for error in field.errors %}
+              {{ error }}
+            {% endfor %}
+          </p>
+        
+      {% endfor %}
+      <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+    <h6 class="mt-4">Already have an account?</h6>
+    <a class="btn btn-outline-primary btn-sm" href="/login">Login</a>   
+    
+   {% endblock %} 

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+  {% block title %}Add Feedback Form{% endblock %}
+
+  {% block content %}
+
+    <h3>Add New Feedback</h3>
+    <h4>User: {{ user.username }}</h4>
+    <form id="add_feedback_form" method="POST"> 
+      {{ form.hidden_tag() }}
+    
+      {% for field in form
+        if field.widget.input_type != 'hidden' %}
+    
+        <p>
+          {{ field.label }} 
+          {{ field }}     
+           
+          {% for error in field.errors %}
+            {{ error }}
+          {% endfor %}
+        </p>
+    
+      {% endfor %}
+      <button class="btn btn-success btn-sm" type="submit">Save</button>
+      <a class="btn btn-outline-success btn-sm" href="/users/{{ user.username }}">Cancel</a>
+    </form>
+    <a class="btn btn-outline-primary btn-sm mt-5" href="/logout">Logout</a>
+
+  {% endblock %}  

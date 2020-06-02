@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+  </head>
+  <body class="ml-4 mr-4 bg-secondary">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary shadow">
+      <h1 class="font-weight-lighter text-light">Feedback App</h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class=" ml-3 navbar-nav mr-auto">
+          <li class="nav-item">
+            {% if "username" in session %}
+              <a class="nav-link" href="/logout">Logout</a>
+            {% else %}  
+              <a class="nav-link" href="/">Create Account</a>
+            {% endif %}  
+          </li>
+          <li class="nav-item">
+            {% if "username" in session %}
+              <a class="nav-link" href="/">Profile</a>
+            {% else %}  
+              <a class="nav-link" href="/login">Login</a>
+            {% endif %}  
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <!-- <h1 class="bg-info text-white text-center shadow font-weight-lighter">Feedback App</h1> -->
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class=>
+          <div class="rounded mt-4 p-3 shadow-lg bg-light">  
+            {% block content %}{% endblock %}
+          </div>
+        </div>     
+      </div>   
+    </div>
+  <script src="https://unpkg.com/jquery"></script>
+  <script src="https://unpkg.com/popper"></script>
+  <script src="https://unpkg.com/bootstrap"></script>
+  </body>
+</html>

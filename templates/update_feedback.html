@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+  {% block title %}Update Feedback Form{% endblock %}
+
+  {% block content %}
+
+    <h3>Edit {{ feedback.title }}</h3>
+    <h4>User: {{ feedback.user.username }}</h4>
+    <form id="update_feedback_form" method="POST"> 
+      {{ form.hidden_tag() }}
+    
+      {% for field in form
+        if field.widget.input_type != 'hidden' %}
+    
+        <p>
+          {{ field.label }} 
+          {{ field }}     
+           
+          {% for error in field.errors %}
+            {{ error }}
+          {% endfor %}
+        </p>
+    
+      {% endfor %}
+      <button class="btn btn-success btn-sm" type="submit">Save</button>
+      <a class="btn btn-outline-success btn-sm" href="/users/{{ feedback.user.username }}">Cancel</a>
+    </form>
+    <form action="/feedback/{{ feedback.id }}/delete" method="POST">
+      <button class="btn btn-danger btn-sm mt-3" type="submit">Delete Feedback</button>
+    </form></span> 
+    <a class="btn btn-outline-primary btn-sm mt-5" href="/logout">Logout</a>
+
+  {% endblock %}  
